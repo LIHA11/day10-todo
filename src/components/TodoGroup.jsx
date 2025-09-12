@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {TodoItem} from "./TodoItem";
+import {ToDoItem} from "./ToDoItem";
 import './TodoGroup.css';
 
 import {TodoContext} from "../contexts/TodoContext";
@@ -20,7 +20,7 @@ function deleteItem(id, done) {
         {
             state.map((item, index) => {
                 return <div className={"todo-group"} key={index}>
-                    <TodoItem todo={item} key={index} index={index}/>
+                    <ToDoItem todo={item} key={index} index={index}/>
                     <button onClick={() => deleteItem(item.id, item.done)}>X</button>
                 </div>
             })

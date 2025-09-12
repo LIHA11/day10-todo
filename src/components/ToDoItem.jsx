@@ -1,8 +1,9 @@
 import {useContext} from "react";
+import './ToDoItem.css';
 
 import {TodoContext} from "../contexts/TodoContext";
 
-export function TodoItem(props) {
+export function ToDoItem(props) {
     const {state, dispatch} = useContext(TodoContext)
 
     function makeAsDone() {
