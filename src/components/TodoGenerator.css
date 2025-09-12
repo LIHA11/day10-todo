@@ -1,0 +1,17 @@
+.todo-item{
+    width: 350px;
+    padding: 16px;
+    border: 1px solid black;
+    margin-top: 20px;
+    text-align: center;
+}
+.addButton{
+    width: 200px;
+    height: 35px;
+    margin-left:8px;
+    font-size: 16px;
+    color: white;
+    background-color: #4a7bd7;
+    border: none;
+    border-radius: 5%;
+}
