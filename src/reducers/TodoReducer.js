@@ -1,7 +1,5 @@
 export function todoReducer(state, action) {
     switch (action.type) {
-        case "ADD_TODO":
-            return [...state, action.payload];
         case "TOGGLE_TODO":
             /// copy
             const newState = [...state];
@@ -17,6 +15,18 @@ export function todoReducer(state, action) {
 
                 return value
             })
+        case "ADD_TODO":
+            const nextId = state.length > 0 ? Math.max(...state.map(item => item.id)) + 1 : 1;
+            return [
+                ...state,
+                {
+                    id: nextId,
+                    text: action.payload.text,
+                    done: false
+                }
+            ];
+        case "DELETE_TODO":
+            return state.filter(item => item.id !== action.payload.id);
         default:
             return state;
     }

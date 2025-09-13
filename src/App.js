@@ -5,6 +5,7 @@ import {TodoContext} from "./contexts/TodoContext";
 import {TodoList} from "./components/TodoList";
 
 export const initState = [
+
 ];
 
 function App() {
