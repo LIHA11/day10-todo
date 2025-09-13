@@ -1,8 +1,8 @@
 .todo-item{
-    width: 350px;
-    padding: 20px;
+    width: 300px;
+    padding: 5px;
     border: 1px solid black;
-    margin-top: 40px;
+    margin-top: 10px;
     text-align: center;
 }
 .todo-item .todo-done{

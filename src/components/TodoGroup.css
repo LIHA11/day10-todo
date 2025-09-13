@@ -1,5 +1,13 @@
 .todo-group {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.todo-group button {
+    margin-left: 24px;
+    margin-top: 10px;
+    padding: 5px 10px;
 }
