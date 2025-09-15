@@ -6,6 +6,12 @@ import {useNavigate} from "react-router";
 import {api} from "../api/mockApi";
 
 
+const deleteTodo = (id) => {
+        return api.delete(`/todos/${id}`)
+            .then(res => res.data);
+}
+
+
 
 export function TodoGroup() {
     const {state, dispatch} = useContext(TodoContext)
@@ -21,8 +27,8 @@ function deleteItem(id, done) {
         alert("You can only delete a task that is marked as done.");
         return;
     }
-    api.delete(`/todos/${id}`)
-        .then(res => res.data)
+
+    deleteTodo(id)
         .then(() => {
             dispatch({ type: "DELETE_TODO", payload: { id } });
         })
