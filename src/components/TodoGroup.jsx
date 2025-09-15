@@ -3,19 +3,13 @@ import {ToDoItem} from "./ToDoItem";
 import './TodoGroup.css';
 import {TodoContext} from "../contexts/TodoContext";
 import {useNavigate} from "react-router";
-import {api} from "../api/mockApi";
-
-
-const deleteTodo = (id) => {
-        return api.delete(`/todos/${id}`)
-            .then(res => res.data);
-}
-
+import {useTodoService} from "../useTodoService";
 
 
 export function TodoGroup() {
     const {state, dispatch} = useContext(TodoContext)
     const navigate = useNavigate();
+    const{deleteTodo} = useTodoService();
 
 
 function detailItem(id, done) {

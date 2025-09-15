@@ -1,22 +1,13 @@
 import {useContext} from "react";
 import './ToDoItem.css';
-
 import {TodoContext} from "../contexts/TodoContext";
-import {api} from "../api/mockApi";
+import {useTodoService} from "../useTodoService";
 
-
-const putTodo = (props) => {
-    return api.put(`/todos/${props.todo.id}`, {
-        ...props.todo,
-        done: !props.todo.done
-    })
-        .then(res => res.data);
-}
 
 
 export function ToDoItem(props) {
     const {dispatch} = useContext(TodoContext)
-
+    const {putTodo}  = useTodoService()
 
 
     function toggleTodo() {
