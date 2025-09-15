@@ -11,7 +11,7 @@ export function TodoGroup() {
     const navigate = useNavigate();
     const { deleteTodo } = useTodoService();
 
-    // 弹窗相关状态
+
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [modalText, setModalText] = useState('');
@@ -34,30 +34,24 @@ export function TodoGroup() {
             .catch(err => console.error("Failed to delete todo:", err));
     }
 
-    // 打开编辑弹窗
     function showModal(id) {
         setEditId(id);
-        // 查找当前item文本
         const item = state.find(todo => todo.id === id);
         setModalText(item ? item.text : '');
         setOpen(true);
     }
-    // 确认编辑
     function handleOk() {
         setConfirmLoading(true);
-        // 更新 todo 内容
         dispatch({ type: "EDIT_TODO", payload: { id: editId, text: modalText } });
         setTimeout(() => {
             setOpen(false);
             setConfirmLoading(false);
         }, 500);
     }
-    // 取消编辑
     function handleCancel() {
         setOpen(false);
     }
 
-    // 编辑输入框变化
     function handleInputChange(e) {
         setModalText(e.target.value);
     }
