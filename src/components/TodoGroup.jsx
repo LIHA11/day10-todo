@@ -81,7 +81,6 @@ export function TodoGroup() {
                 onChange={handleInputChange}
                 style={{ width: '90%', marginBottom: 16, fontSize: 18, height: 40, padding: '0 12px' }}
             />
-            {/*<p>当前编辑ID: {item.id}</p>*/}
         </Modal>
     </div>
 }
