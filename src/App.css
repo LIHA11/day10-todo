@@ -3,3 +3,14 @@ body {
   place-items: center;
   text-align: center;
 }
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: column;
+}
+.not-found {
+  text-align: center;
+  color: #d32f2f;
+}
