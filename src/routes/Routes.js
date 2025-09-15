@@ -24,14 +24,15 @@ export const routes = createBrowserRouter([
             {
                 path: "/todos/done",
                 element: <DonePages/>
-            },          {
-                path: "/todos/about",
-                element:<AboutPages/>
             },
             {
-                path: "*",
-                element: <ErrorPage/>
+                path: "/todos/about",
+                element:<AboutPages/>
             }
         ]
+    },
+    {
+        path: "*",
+        element: <ErrorPage/>
     }
 ]);

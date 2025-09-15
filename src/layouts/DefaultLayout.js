@@ -20,12 +20,12 @@ export function DefaultLayout() {
         <main>
             <Outlet/>
             <Space style={{ marginTop: 32 }}>
-                Space
+                Others
                 <Button type="primary">Button</Button>
                 <Upload>
                     <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload>
-                <Popconfirm title="Are you sure delete this task?" okText="Yes" cancelText="No">
+                <Popconfirm title="Are you sure confirm this to-do task?" okText="Yes" cancelText="No">
                     <Button>Confirm</Button>
                 </Popconfirm>
             </Space>
