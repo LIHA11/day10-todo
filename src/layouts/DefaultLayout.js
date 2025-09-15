@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {NavLink, Outlet} from "react-router";
 import './DefaultLayout.css';
-import { Pagination, Button, Popconfirm, Space, Upload } from 'antd';
+import { Button, Popconfirm, Space, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
 import { FileTextOutlined } from '@ant-design/icons';
 
 export function DefaultLayout() {
-    const [page, setPage] = useState(1);
     return <div>
         <header>
             <nav>
@@ -20,13 +19,6 @@ export function DefaultLayout() {
         </header>
         <main>
             <Outlet/>
-            <Pagination
-                current={page}
-                total={50}
-                pageSize={10}
-                onChange={p => setPage(p)}
-                style={{ marginTop: 24 }}
-            />
             <Space style={{ marginTop: 32 }}>
                 Space
                 <Button type="primary">Button</Button>
