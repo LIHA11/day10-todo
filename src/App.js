@@ -1,17 +1,25 @@
 import './App.css';
-import {useReducer} from "react";
+import {useEffect, useReducer} from "react";
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
 import {RouterProvider} from "react-router";
 import {routes} from "./routes/Routes";
+import axios from "axios";
 
 
-export const initState = [
-
-];
+const api = axios.create({
+    baseURL: 'https://68c7ac8f5d8d9f51473287a8.mockapi.io/',
+    headers: {'Content-Type': 'application/json'},
+    timeout: 10_000
+})
 
 function App() {
-    const [state, dispatch] = useReducer(todoReducer, initState);
+    const [state, dispatch] = useReducer(todoReducer, []);
+    useEffect(() => {
+        api.get('/todos')
+            .then(response => response.data)
+            .then(todos => dispatch({type: "LOAD_TODOS", payload: todos}))
+    }, [dispatch])
     return (
         <div>
             <h1>TODO list</h1>
