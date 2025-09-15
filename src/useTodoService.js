@@ -20,10 +20,17 @@ export function useTodoService() {
             .then(res => res.data);
     }
 
+    const updateTodo = todo => api.put(`todos/${todo.id}`, {
+        id: todo.id,
+        text: todo.text,
+        done: todo.done
+    })
+        .then(res => res.data);
+
     const deleteTodo = (id) => {
         return api.delete(`/todos/${id}`)
             .then(res => res.data);
     }
 
-    return {loadTodos,createTodo, putTodo, deleteTodo}
+    return {loadTodos,createTodo, putTodo, deleteTodo,updateTodo}
 }

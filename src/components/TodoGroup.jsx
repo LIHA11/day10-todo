@@ -9,13 +9,13 @@ import { Button, Modal } from 'antd';
 export function TodoGroup() {
     const { state, dispatch } = useContext(TodoContext)
     const navigate = useNavigate();
-    const { deleteTodo } = useTodoService();
+    const { deleteTodo,updateTodo } = useTodoService();
 
 
     const [open, setOpen] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
     const [modalText, setModalText] = useState('');
-    const [editId, setEditId] = useState(null);
+    const [item, setItem] = useState(null);
 
     function detailItem(id, done) {
         navigate(`/todos/${id}`);
@@ -34,15 +34,17 @@ export function TodoGroup() {
             .catch(err => console.error("Failed to delete todo:", err));
     }
 
-    function showModal(id) {
-        setEditId(id);
-        const item = state.find(todo => todo.id === id);
-        setModalText(item ? item.text : '');
+    function showModal(item) {
+        setItem(item);
+        setModalText(item.text);
         setOpen(true);
     }
     function handleOk() {
         setConfirmLoading(true);
-        dispatch({ type: "EDIT_TODO", payload: { id: editId, text: modalText } });
+        const newTodo = { ...item, text: modalText };
+        updateTodo(newTodo).then(todo=>{
+            dispatch({ type: "EDIT_TODO", payload: newTodo });
+        })
         setTimeout(() => {
             setOpen(false);
             setConfirmLoading(false);
@@ -63,7 +65,7 @@ export function TodoGroup() {
                     <ToDoItem todo={item} key={index} index={index} />
                     <button onClick={() => deleteItem(item.id, item.done)}>X</button>
                     <button onClick={() => detailItem(item.id, item.done)}>detail</button>
-                    <Button type="primary" style={{ marginLeft: 8 }} onClick={() => showModal(item.id)}>edit</Button>
+                    <Button type="primary" style={{ marginLeft: 8 }} onClick={() => showModal(item)}>edit</Button>
                 </div>
             })
         }
@@ -79,7 +81,7 @@ export function TodoGroup() {
                 onChange={handleInputChange}
                 style={{ width: '90%', marginBottom: 16, fontSize: 18, height: 40, padding: '0 12px' }}
             />
-            <p>当前编辑ID: {editId}</p>
+            {/*<p>当前编辑ID: {item.id}</p>*/}
         </Modal>
     </div>
 }
