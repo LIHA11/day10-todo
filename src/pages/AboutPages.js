@@ -1,5 +1,5 @@
-
 import React from "react";
+import { Rate } from 'antd';
 
 export function AboutPages() {
     return (
@@ -11,6 +11,9 @@ export function AboutPages() {
             <p>
                 Enjoy your task management!
             </p>
+            <div style={{ marginTop: 32 }}>
+                <Rate allowHalf defaultValue={2.5} />
+            </div>
         </div>
     );
 }
