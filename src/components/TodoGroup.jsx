@@ -3,6 +3,7 @@ import {ToDoItem} from "./ToDoItem";
 import './TodoGroup.css';
 import {TodoContext} from "../contexts/TodoContext";
 import {useNavigate} from "react-router";
+import {api} from "../api/mockApi";
 
 
 
@@ -20,7 +21,12 @@ function deleteItem(id, done) {
         alert("You can only delete a task that is marked as done.");
         return;
     }
-    dispatch({ type: "DELETE_TODO", payload: { id } });
+    api.delete(`/todos/${id}`)
+        .then(res => res.data)
+        .then(() => {
+            dispatch({ type: "DELETE_TODO", payload: { id } });
+        })
+        .catch(err => console.error("Failed to delete todo:", err));
 }
 
     return <div>
