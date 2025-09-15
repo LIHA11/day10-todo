@@ -1,4 +1,5 @@
 import {NavLink, Outlet} from "react-router";
+import './DefaultLayout.css';
 
 export function DefaultLayout() {
     return <div>
