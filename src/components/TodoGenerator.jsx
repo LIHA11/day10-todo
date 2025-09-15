@@ -5,7 +5,7 @@ import {useTodoService} from "../useTodoService";
 
 
 export function TodoGenerator() {
-    const {dispatch, state} = useContext(TodoContext);
+    const {dispatch} = useContext(TodoContext);
     const [text, setText] = useState('');
     const {createTodo} = useTodoService();
 
