@@ -8,3 +8,21 @@
 .todo-item .todo-done{
     text-decoration: line-through;
 }
+.todo-group button:first-of-type {
+    background: #f56565; /* 红色 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-right: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.todo-group button:last-of-type {
+    background: #48bb78; /* 绿色 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
