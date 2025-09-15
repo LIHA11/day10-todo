@@ -27,8 +27,11 @@ export const routes = createBrowserRouter([
             },          {
                 path: "/todos/about",
                 element:<AboutPages/>
+            },
+            {
+                path: "*",
+                element: <ErrorPage/>
             }
-
         ]
     }
 ]);
