@@ -1,4 +1,5 @@
 import axios from "axios";
+import '@ant-design/v5-patch-for-react-19';
 import {message} from "antd";
 
 const api = axios.create({
@@ -14,8 +15,10 @@ api.interceptors.response.use(
     (error) => {
         const {status} = error.response;
         if (status === 404) {
-            alert(error.message);
-            // message.error(error.message).then(r => {});
+            // alert(error.message);
+            message.
+            error(error.message,10_0000)
+                .then(r => {});
 
         }
         return Promise.reject(error);
